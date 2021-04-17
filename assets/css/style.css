@@ -308,7 +308,7 @@ footer .buttons button:focus {
   color: var(--dark-text);
 }
 footer .attribution {
-  color: var(--dark-text);
+  color: var(--header-outline);
   text-align: center;
 }
 footer .attribution a {

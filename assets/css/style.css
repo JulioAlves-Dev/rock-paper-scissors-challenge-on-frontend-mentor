@@ -1,0 +1,609 @@
+:root {
+  /* Primary */
+  --scissors-gradient-from: hsl(39, 89%, 49%);
+  --scissors-gradient-to: hsl(40, 84%, 53%);
+  --paper-gradient-from: hsl(230, 89%, 62%);
+  --paper-gradient-to: hsl(230, 89%, 65%);
+  --rock-gradient-from: hsl(349, 71%, 52%);
+  --rock-gradient-to: hsl(349, 70%, 56%);
+  --lizard-gradient-from: hsl(261, 73%, 60%);
+  --lizard-gradient-to: hsl(261, 72%, 63%);
+  --cyan-from: hsl(189, 59%, 53%);
+  --cyan-to: hsl(189, 58%, 57%);
+
+  /* Neutral */
+  --dark-text: hsl(229, 25%, 31%);
+  --score-text: hsl(229, 64%, 46%);
+  --header-outline: hsl(217, 16%, 45%);
+
+  /* Background */
+  --radial-gradient-from: hsl(214, 47%, 23%);
+  --radial-gradient-to: hsl(237, 49%, 15%);
+
+  --box-shadow-win: 0px 0px 0px 30px rgba(255, 255, 255, 0.05),
+    0px 0px 0px 60px rgba(255, 255, 255, 0.04),
+    0px 0px 0px 90px rgba(255, 255, 255, 0.03);
+
+  --box-shadow-win-mobile: 0px 0px 0px 15px rgba(255, 255, 255, 0.05),
+    0px 0px 0px 30px rgba(255, 255, 255, 0.04),
+    0px 0px 0px 45px rgba(255, 255, 255, 0.03);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  max-width: 100vw;
+  min-height: 100vh;
+  font-family: "Barlow Semi Condensed", sans-serif;
+  /* background: rgb(31, 55, 86); */
+  background-image: radial-gradient(
+    circle at center top,
+    var(--radial-gradient-from) 20%,
+    var(--radial-gradient-to) 100%
+  );
+  background-repeat: repeat-y;
+  overflow-x: hidden;
+}
+
+header .title-and-score {
+  max-width: 800px;
+  height: 150px;
+  border: 3px solid var(--header-outline);
+  border-radius: 1rem;
+  margin: 1.2rem auto 1.2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0px 1.5rem;
+}
+
+header .score {
+  width: 140px;
+  height: 110px;
+  background-color: #fff;
+  border-radius: 0.5rem;
+  text-align: center;
+}
+header .score span {
+  display: block;
+  margin-top: 12px;
+  color: var(--score-text);
+}
+header .score div {
+  font-weight: 700;
+  margin-top: -8px;
+  font-size: 4rem;
+  color: var(--dark-text);
+}
+main {
+  margin-bottom: 5px;
+}
+main .game {
+  width: 800px;
+  min-height: 400px;
+  margin: auto;
+  display: grid;
+  justify-content: center;
+}
+main .game.grid-area-select-default {
+  grid-template-areas:
+    "AreaBlue AreaYellow"
+    "AreaRed AreaRed";
+  background: url("./../../images/bg-triangle.svg") no-repeat;
+  background-position: center 80px;
+}
+main .game.grid-area-select {
+  grid-template-areas: "AreaSelected1 AreaPlayAgain AreaSelected2";
+}
+
+main .game .game1 {
+  grid-area: AreaBlue;
+}
+main .game .game2 {
+  grid-area: AreaYellow;
+}
+main .game .game3 {
+  grid-area: AreaRed;
+}
+main .game .game-selected {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+}
+main .game .game-selected h3 {
+  text-align: center;
+  font-weight: 600;
+  font-size: 1.25rem;
+  color: #fff;
+}
+main .game .game-selected-1 {
+  grid-area: AreaSelected1;
+  margin-right: 100px;
+}
+main .game .game-selected-2 {
+  grid-area: AreaSelected2;
+  margin-left: 100px;
+}
+main .game .game-play-again {
+  grid-area: AreaPlayAgain;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-self: center;
+}
+main .game .game-play-again h2 {
+  text-align: center;
+  font-size: 3rem;
+  color: #fff;
+  margin-bottom: 10px;
+}
+main .game .game-play-again button {
+  font-family: "Barlow Semi Condensed", sans-serif;
+  border: none;
+  height: 40px;
+  width: 200px;
+  font-size: 1rem;
+  color: var(--rock-gradient-from);
+  cursor: pointer;
+  margin: auto;
+}
+
+/*CIRCLE DEFAULT CODE */
+
+main .game .circle {
+  width: 180px;
+  height: 180px;
+  margin: auto;
+  cursor: pointer;
+}
+main .game .game-selected-int {
+  width: 240px;
+  height: 240px;
+}
+main .game .circle,
+main .game .game-selected-int {
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: box-shadow 0.3s;
+}
+main .game .circle:hover {
+  box-shadow: 0px 0px 0px 10px rgba(255, 255, 255, 0.2);
+}
+main .game .circle2 {
+  width: 130px;
+  height: 130px;
+}
+main .game .game-select-circle {
+  width: 190px;
+  height: 190px;
+}
+main .game .circle2,
+main .game .game-select-circle {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+main .circle2 img {
+  width: 70px;
+}
+main .game .game-select-circle img {
+  width: 80px;
+}
+
+main .game .circle2,
+main .game .game-select-circle {
+  background-color: #fff;
+  border-radius: 50%;
+  margin-bottom: -8px;
+  box-shadow: 0px -8px 0px #ddd;
+}
+
+/*CIRCLE DEFAULT CODE */
+
+main .game .games-selected-1-int {
+  background: #555;
+  box-shadow: 0px 8px 0px #444;
+}
+
+main .game .games-selected-2-int {
+  background: #555;
+  box-shadow: 0px 8px 0px #444;
+  animation: animationRotateGame 0.7s;
+  animation-iteration-count: 3;
+}
+main .game .games-selected-1-int.paper,
+main .game .games-selected-2-int.paper {
+  background: var(--paper-gradient-to);
+  box-shadow: 0px 8px 0px var(--paper-gradient-from);
+}
+
+main .game #paper-winner {
+  box-shadow: 0px 8px 0px var(--paper-gradient-from), var(--box-shadow-win);
+}
+
+main .game .games-selected-1-int.scissors,
+main .game .games-selected-2-int.scissors {
+  background: var(--scissors-gradient-to);
+  box-shadow: 0px 8px 0px var(--scissors-gradient-from);
+}
+
+main .game #scissors-winner {
+  box-shadow: 0px 8px 0px var(--scissors-gradient-from), var(--box-shadow-win);
+}
+main .game .games-selected-1-int.rock,
+main .game .games-selected-2-int.rock {
+  background: var(--rock-gradient-to);
+  box-shadow: 0px 8px 0px var(--rock-gradient-from);
+}
+
+main .game #rock-winner {
+  box-shadow: 0px 8px 0px var(--rock-gradient-from), var(--box-shadow-win);
+}
+@keyframes animationRotateGame {
+  from {
+    transform: rotateY(0deg);
+  }
+  to {
+    transform: rotateY(180deg);
+  }
+}
+
+main .game .circle-blue {
+  background: var(--paper-gradient-to);
+  box-shadow: 0px 8px 0px var(--paper-gradient-from);
+  margin-right: 2rem;
+}
+main .game .circle-yellow {
+  background: var(--scissors-gradient-to);
+  box-shadow: 0px 8px 0px var(--scissors-gradient-from);
+  margin-left: 2rem;
+}
+main .game .circle-red {
+  background: var(--rock-gradient-to);
+  box-shadow: 0px 8px 0px var(--rock-gradient-from);
+  margin-top: 2rem;
+}
+
+footer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+footer .attribution {
+  padding: 20px 0;
+}
+footer .buttons-and-attribution {
+  width: 100%;
+}
+footer .buttons-and-attribution .buttons {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  padding: 1rem 2rem;
+}
+footer .buttons button {
+  font-family: "Barlow Semi Condensed", sans-serif;
+  border: 1px solid #fff;
+  padding: 10px 30px;
+  border-radius: 0.5rem;
+  background: transparent;
+  color: #fff;
+  font-size: 0.9rem;
+  letter-spacing: 2px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+footer .buttons button:hover,
+footer .buttons button:focus {
+  background: #fff;
+  color: var(--dark-text);
+}
+footer .attribution {
+  color: var(--dark-text);
+  text-align: center;
+}
+footer .attribution a {
+  color: #fff;
+}
+
+.modal-rules {
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.2);
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-rules .modal {
+  width: 400px;
+  height: 400px;
+  background: #fff;
+  border-radius: 0.5rem;
+}
+
+.modal-rules .modal-title-and-close {
+  display: flex;
+  justify-content: space-between;
+  padding: 30px;
+}
+
+.modal-rules .modal-title-and-close h2 {
+  font-size: 2rem;
+  color: var(--dark-text);
+}
+.modal-rules .modal-title-and-close button {
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  outline: none;
+}
+
+.modal-rules .modal-rules-img {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modalRulesAnimationOpen {
+  animation: animationModalRulesOpen 0.5s forwards;
+}
+.modalRulesAnimationClose {
+  animation: animationModalRulesClose 0.5s forwards;
+}
+
+@keyframes animationModalRulesOpen {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes animationModalRulesClose {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+@media (max-width: 800px) {
+  header .title-and-score {
+    margin: 1.2rem 30px 1.2rem;
+    height: 125px;
+  }
+  header .title img {
+    width: 120px;
+  }
+  header .score {
+    width: 120px;
+    height: 100px;
+  }
+  header .score div {
+    font-size: 3.25rem;
+    margin-top: -5px;
+  }
+  main .game {
+    width: auto;
+  }
+  main .game .circle {
+    width: 150px;
+    height: 150px;
+  }
+  main .game .circle2 {
+    width: 110px;
+    height: 110px;
+  }
+  main .game .game1 {
+    margin-right: 1.5rem;
+  }
+  main .game .game2 {
+    margin-left: 1.5rem;
+  }
+  main .game .game3 {
+    margin-top: -3rem;
+  }
+  main .game.grid-area-select-default {
+    background-size: 250px;
+  }
+  main .game .game-selected-int {
+    width: 200px;
+    height: 200px;
+  }
+  main .game .game-select-circle {
+    width: 150px;
+    height: 150px;
+  }
+  main .game .game-selected-1 {
+    margin-right: 30px;
+    margin-left: 25px;
+  }
+  main .game .game-selected-2 {
+    margin-left: 30px;
+  }
+  footer .buttons-and-attribution .buttons {
+    flex-direction: column-reverse;
+    align-items: center;
+  }
+  footer .buttons button {
+    max-width: 375px;
+  }
+  footer .buttons button[data-modal-rules-open] {
+    width: 120px;
+  }
+}
+
+@media (max-width: 700px) {
+  main .game.grid-area-select {
+    grid-template-areas:
+      "AreaSelected1 AreaSelected2"
+      "AreaPlayAgain AreaPlayAgain";
+  }
+
+  main .game .game-play-again {
+    margin: 40px 0px;
+  }
+  main .game .game-selected {
+    flex-direction: column-reverse;
+  }
+  main .game .game-selected h3 {
+    margin-top: 30px;
+  }
+  main .game #paper-winner {
+    box-shadow: 0px 8px 0px var(--paper-gradient-from),
+      var(--box-shadow-win-mobile);
+  }
+  main .game #scissors-winner {
+    box-shadow: 0px 8px 0px var(--scissors-gradient-from),
+      var(--box-shadow-win-mobile);
+  }
+  main .game #rock-winner {
+    box-shadow: 0px 8px 0px var(--rock-gradient-from),
+      var(--box-shadow-win-mobile);
+  }
+}
+
+@media (max-width: 550px) {
+  main .game .game-selected-int {
+    width: 150px;
+    height: 150px;
+  }
+  main .game .game-select-circle {
+    width: 110px;
+    height: 110px;
+  }
+  main .game .game-select-circle img {
+    width: 60px;
+  }
+}
+
+@media (max-width: 450px) {
+  header .title-and-score {
+    height: 100px;
+  }
+  header .score {
+    width: 80px;
+    height: 70px;
+  }
+  header .score span {
+    margin-top: 10px;
+    font-size: 0.9rem;
+  }
+  header .score div {
+    font-size: 2rem;
+  }
+  header .title img {
+    width: 80px;
+  }
+  main .game .game1 {
+    margin-right: -0.5rem;
+  }
+  main .game .game2 {
+    margin-left: -0.5rem;
+  }
+  main .game .circle-red {
+    margin-top: -1rem;
+  }
+  main .game .game-selected-1 {
+    margin-right: 30px;
+    margin-left: 0;
+  }
+  footer .buttons-and-attribution .buttons {
+    margin-top: -50px;
+  }
+  .modal-rules .modal {
+    width: 100%;
+    height: 100%;
+  }
+  .modal-rules .modal-title-and-close {
+    flex-direction: column-reverse;
+    align-items: center;
+  }
+  .modal-rules .modal-title-and-close h2 {
+    margin: 30px 0;
+  }
+}
+
+@media (max-width: 375px) {
+  main .game .circle,
+  main .game .game-selected-int {
+    width: 120px;
+    height: 120px;
+  }
+  main .game .circle2,
+  main .game .game-select-circle {
+    width: 90px;
+    height: 90px;
+  }
+  main .game .circle2 img,
+  main .game .game-select-circle img {
+    width: 50px;
+  }
+  main .game .circle2,
+  main .game .game-select-circle {
+    box-shadow: 0px -5px 0px #ddd;
+  }
+  main .game .game-play-again {
+    margin-right: 0px;
+  }
+  main .game .game-selected h3 {
+    font-size: 1rem;
+  }
+
+  main .game.grid-area-select-default {
+    background-size: 200px;
+  }
+
+  main .game.grid-area-select-default {
+    background-position: center 60px;
+  }
+
+  main .game .game3 {
+    margin-top: -6rem;
+  }
+}
+
+@media (max-width: 320px) {
+  main .game .circle,
+  main .game .game-selected-int {
+    width: 90px;
+    height: 90px;
+  }
+  main .game .circle2,
+  main .game .game-select-circle {
+    width: 70px;
+    height: 70px;
+  }
+  main .game .circle2 img,
+  main .game .game-select-circle img {
+    width: 40px;
+  }
+  main .game.grid-area-select-default {
+    background-position: center 40px;
+  }
+  main .game.grid-area-select-default {
+    background-size: 150px;
+  }
+  main .game .game3 {
+    margin-top: -7rem;
+  }
+  main .game .game-selected {
+    flex-direction: column-reverse;
+    max-width: 100px;
+  }
+}

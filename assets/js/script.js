@@ -9,6 +9,9 @@ const el = (e) => document.querySelector(e),
 
 buttonRulesModalOpen.addEventListener("click", openModalRules);
 buttonRulesModalClose.addEventListener("click", closeModalRules);
+rulesModal.addEventListener("click", (e) => {
+  if (e.target === rulesModal) closeModalRules();
+});
 function openModalRules() {
   rulesModal.classList.remove("modalRulesAnimationClose");
   rulesModal.style.display = "flex";
